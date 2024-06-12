@@ -22,8 +22,4 @@ public class ListUsersSteps {
         SerenityRest.when().get(ReqresAPI.LIST_USERS);
     }
 
-    @Then("Status code should be {int}")
-    public void statusCodeShouldBe(int statusCode) {
-        SerenityRest.then().statusCode(statusCode);
-    }
 }
