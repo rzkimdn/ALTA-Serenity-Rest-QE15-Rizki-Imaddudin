@@ -4,7 +4,16 @@ Feature: Get list users API
     Given Get list users with parameter page <page>
     When Send request get list users
     Then Status code should be 200
+    And Response body page should be <page>
+    And Validate json schema "list_user_json_schema.json"
     Examples:
     |page|
     |1   |
     |2   |
+
+  ##negative test case tapi semua invalid test tetap pass 200 OK
+  @Tugas
+  Scenario: Get list user with invalid parameter page
+    Given Get list users with invalid parameter page "$"
+    When Send request get list users
+    Then Status code should be 200

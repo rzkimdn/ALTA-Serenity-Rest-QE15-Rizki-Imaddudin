@@ -19,6 +19,11 @@ public class ReqresAPI {
         SerenityRest.given()
                 .pathParam("page", page);
     }
+    @Step("Get list users invalid")
+    public void getListUsers1(String page1){
+        SerenityRest.given()
+                .pathParam("page", page1);
+    }
 
     @Step("Create new user")
     public void postCreateNewUser(File json){

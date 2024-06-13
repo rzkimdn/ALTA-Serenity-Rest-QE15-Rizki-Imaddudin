@@ -1,12 +1,20 @@
 package starter.stepdef;
 
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import io.restassured.module.jsv.JsonSchemaValidator;
 import net.serenitybdd.rest.SerenityRest;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.annotations.Steps;
 import starter.reqres.ReqresAPI;
+import starter.reqres.ReqresResponses;
+import starter.utils.Constants;
+
+import java.io.File;
+
+import static org.hamcrest.Matchers.equalTo;
 
 public class ListUsersSteps {
     @Steps
@@ -20,6 +28,16 @@ public class ListUsersSteps {
     @When("Send request get list users")
     public void sendRequestGetListUsers() {
         SerenityRest.when().get(ReqresAPI.LIST_USERS);
+    }
+
+    @Given("Get list users with invalid parameter page {string}")
+    public void getListUsersWithInvalidParameterPage(String page1) {
+        reqresAPI.getListUsers1(page1);
+    }
+
+    @And("Response body page should be {int}")
+    public void responseBodyPageShouldBePage(int page) {
+        SerenityRest.and().body(ReqresResponses.PAGE, equalTo(page));
     }
 
 }
