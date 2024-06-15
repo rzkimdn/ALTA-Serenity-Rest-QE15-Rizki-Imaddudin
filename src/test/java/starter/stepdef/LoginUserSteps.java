@@ -35,13 +35,35 @@ public class LoginUserSteps {
 
     @And("Response body token should be {string}")
     public void responseBodyTokenShouldBe(String token) {
-        token = "QpwL5tke4Pnpja7X4";
         SerenityRest.and().body(ReqresResponses.TOKEN, equalTo(token));
     }
 
     @And("Response body error should be {string}")
     public void responseBodyErrorShouldBe(String error) {
-        error = "Missing password";
         SerenityRest.and().body(ReqresResponses.ERROR, equalTo(error));
+    }
+
+    @Given("User login with empty email json {string}")
+    public void userLoginWithEmptyEmailJson(String emptyEmail) {
+        File jsonFile = new File(Constants.REQ_BODY + emptyEmail);
+        reqresAPI.loginUser(jsonFile);
+    }
+
+    @Given("User login with empty password json {string}")
+    public void userLoginWithEmptyPasswordJson(String emptyPassword) {
+        File jsonFile = new File(Constants.REQ_BODY + emptyPassword);
+        reqresAPI.loginUser(jsonFile);
+    }
+
+    @Given("User login with empty email & password json {string}")
+    public void userLoginWithEmptyEmailPasswordJson(String empty) {
+        File jsonFile = new File(Constants.REQ_BODY + empty);
+        reqresAPI.loginUser(jsonFile);
+    }
+
+    @Given("User login with special character json {string}")
+    public void userLoginWithSpecialCharacterJson(String specialChar) {
+        File jsonFile = new File(Constants.REQ_BODY + specialChar);
+        reqresAPI.loginUser(jsonFile);
     }
 }

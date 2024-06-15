@@ -19,10 +19,15 @@ public class ReqresAPI {
         SerenityRest.given()
                 .pathParam("page", page);
     }
-    @Step("Get list users invalid")
-    public void getListUsers1(String page1){
+    @Step("Get single user with invalid id")
+    public void getSingleUserInvalid(String id){
         SerenityRest.given()
-                .pathParam("page", page1);
+                .pathParam("id", id);
+    }
+    @Step("Get single users")
+    public void getSingleUser(int id){
+        SerenityRest.given()
+                .pathParam("idUser", id);
     }
 
     @Step("Create new user")

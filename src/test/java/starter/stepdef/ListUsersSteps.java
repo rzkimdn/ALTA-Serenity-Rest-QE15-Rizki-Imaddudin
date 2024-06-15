@@ -31,8 +31,8 @@ public class ListUsersSteps {
     }
 
     @Given("Get list users with invalid parameter page {string}")
-    public void getListUsersWithInvalidParameterPage(String page1) {
-        reqresAPI.getListUsers1(page1);
+    public void getListUsersWithInvalidParameterPage(String id) {
+        reqresAPI.getSingleUserInvalid(id);
     }
 
     @And("Response body page should be {int}")

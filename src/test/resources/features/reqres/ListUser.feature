@@ -11,9 +11,10 @@ Feature: Get list users API
     |1   |
     |2   |
 
-  ##negative test case tapi semua invalid test tetap pass 200 OK
-  @Tugas
-  Scenario: Get list user with invalid parameter page
-    Given Get list users with invalid parameter page "$"
-    When Send request get list users
-    Then Status code should be 200
+  ##negative test case tapi semua invalid test tetap pass 200 OK di postman juga
+#  @Tugas
+#  Scenario: Get list user with invalid parameter page
+#    Given Get list users with invalid parameter page "$"
+#    When Send request get list users
+#    Then Status code should be 200
+#
