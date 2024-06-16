@@ -9,6 +9,7 @@ import starter.reqres.ReqresAPI;
 import starter.reqres.ReqresResponses;
 
 import static org.hamcrest.Matchers.equalTo;
+import static org.hamcrest.Matchers.nullValue;
 
 public class SingleUserSteps {
     @Steps
@@ -27,5 +28,25 @@ public class SingleUserSteps {
     @And("Response body single user should be id {int}")
     public void responseBodySingleUserShouldBeId(int id) {
         SerenityRest.and().body(ReqresResponses.ID_USER, equalTo(id));
+    }
+
+    @Given("Get single user with special character {string}")
+    public void getSingleUserWithSpecialCharacter(String specialChar) {
+        reqresAPI.getSingleUserInvalid(specialChar);
+    }
+
+    @And("Response body error should be null")
+    public void responseBodyErrorShouldBeNull() {
+        SerenityRest.and().body(ReqresResponses.ID_USER, equalTo(nullValue()));
+    }
+
+    @Given("Get single user with invalid parameter id {int}")
+    public void getSingleUserWithInvalidParameterId(int id) {
+        reqresAPI.getSingleUser(id);
+    }
+
+    @And("Response body single user should be {string}")
+    public void responseBodySingleUserShouldBeNull(String nullField) {
+        SerenityRest.and().body(equalTo(nullField));
     }
 }

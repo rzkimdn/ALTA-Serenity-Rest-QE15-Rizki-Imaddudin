@@ -30,14 +30,15 @@ public class ListUsersSteps {
         SerenityRest.when().get(ReqresAPI.LIST_USERS);
     }
 
-    @Given("Get list users with invalid parameter page {string}")
-    public void getListUsersWithInvalidParameterPage(String id) {
-        reqresAPI.getSingleUserInvalid(id);
-    }
 
     @And("Response body page should be {int}")
     public void responseBodyPageShouldBePage(int page) {
         SerenityRest.and().body(ReqresResponses.PAGE, equalTo(page));
+    }
+
+    @Given("Get list users with special character page {string}")
+    public void getListUsersWithSpecialCharacterPage(String specialChar) {
+        reqresAPI.getListUserInvalid(specialChar);
     }
 
 }

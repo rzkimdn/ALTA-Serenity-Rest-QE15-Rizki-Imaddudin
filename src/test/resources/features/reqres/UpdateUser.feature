@@ -25,4 +25,9 @@ Feature: Put Update user API
       |3 |update_user1.json| Rizki Imaddudin Edit 1| QA Engineer Edit 1|
       |4 |update_user2.json| Rizki Imaddudin Edit 2| QA Engineer Edit 2|
 
-  Scenario: Update user
+  Scenario: Update user with empty field
+    Given Update user with empty id 2 and job "update_user_empty.json"
+    When Send request put update user
+    Then Status code should be 200
+    And Response body name should be "" and job should be ""
+    And Validate json schema "update_user_empty_json_schema.json"
